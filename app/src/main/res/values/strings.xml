@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Taskmaster</string>
+    <string name="Lorem_Ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac faucibus libero. Sed auctor mattis odio. Suspendisse gravida ipsum vitae tincidunt interdum. Nam consectetur ut mauris at ultricies. Proin eget justo id ipsum feugiat auctor nec eu massa. Maecenas dapibus turpis sed vulputate faucibus. Phasellus magna eros, elementum in mauris sed, vulputate finibus arcu. Nam justo est, dignissim nec ante sit amet, hendrerit auctor tellus. Nam feugiat, nisi sed placerat interdum, sem eros tempor lorem, eget pretium orci tortor id purus. Suspendisse sit amet est sodales, scelerisque nunc a, condimentum lacus. Pellentesque aliquam massa in est eleifend ultricies. Praesent at justo nec elit iaculis dignissim. Ut ullamcorper tortor eu luctus tincidunt. Sed dictum eros malesuada, sollicitudin purus eu, fringilla massa.</string>
+    <string name="task_detail">Task Detail</string>
+    <string name="username">Username</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="save">Save</string>
+    <string name="setting_page">Setting Page</string>
+    <string name="username_with_input">Username: %1$s</string>
+    <string name="my_tasks">My Tasks</string>
+    <string name="todo">TODO</string>
+    <string name="add_task">Add Task</string>
+    <string name="setting">Setting</string>
+    <string name="all_tasks">All Tasks</string>
+    <string name="task_one">Task One</string>
+    <string name="task_two">Task Two</string>
+    <string name="nothing">Nothing!!</string>
 </resources>

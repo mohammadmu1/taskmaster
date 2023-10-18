@@ -26,3 +26,4 @@ The Task Master mobile application features three main pages:
 
 3. **All Tasks Page**:
    - Displays an image.
+   - back button.

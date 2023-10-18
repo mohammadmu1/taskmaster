@@ -63,16 +63,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADD TASK"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="438dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.758" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total Tasks : 0"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="544dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.905" />
 
     <TextView
         android:id="@+id/submittedLabel"

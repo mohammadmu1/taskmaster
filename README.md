@@ -10,7 +10,7 @@
 ![Add before submit](./screenshots/add.jpg)
 
 ## Add after submit
-![Add after submit](./screenshots/add%20with%20label.jpg)
+![Add after submit](./screenshots/add%20with%20lable.jpg)
 
 ## Description
 

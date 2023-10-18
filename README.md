@@ -1,7 +1,7 @@
 # taskmaster
 ## Description
 
-The Task Master mobile application features three main pages:
+The Task Master mobile application features 6 main pages:
 
 # lab 27
 

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -16,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class SettingActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
-    public static final String USERNAME_TAG="username";
+    public static final String USERNAME_TAG = "username";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +25,21 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Button saveButton= findViewById(R.id.saveUserSettingsButton);
-        saveButton.setOnClickListener(view -> {
-            SharedPreferences.Editor preferneceEditor= sharedPreferences.edit();
+
+
+
+        findViewById(R.id.saveUserSettingsButton).setOnClickListener(view -> {
+            SharedPreferences.Editor preferenceEditor = sharedPreferences.edit();
             EditText usernameEditText = findViewById(R.id.usernameEditText);
             String usernameString = usernameEditText.getText().toString();
-            preferneceEditor.putString(USERNAME_TAG, usernameString);
-            preferneceEditor.apply();
-            Snackbar.make(findViewById(R.id.settingActivity), "Settings Saved", Snackbar.LENGTH_SHORT).show();
-        });
+            preferenceEditor.putString(USERNAME_TAG, usernameString);
+            preferenceEditor.apply();
 
+
+//            Toast.makeText(this, "UserName Saved", Toast.LENGTH_SHORT).show();
+
+
+            Snackbar.make(findViewById(R.id.settingActivity), "UserName Saved", Snackbar.LENGTH_SHORT).show();
+        });
     }
 }

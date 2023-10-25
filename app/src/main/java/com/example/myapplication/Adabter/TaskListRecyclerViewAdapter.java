@@ -9,14 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 
-//STEP4
+//TODO : step 1-4 Make a Class to Manage RV
 public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter {
+    //TODO : step 1-7 inflate fragment
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //STEP7
-        View TaskFragment = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_task,parent,false);
-        //STEP9
+
+        View TaskFragment = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_task_list,parent,false);
+        //TODO : step 1-9 Attach fragment to ViewHolder
         return new TaskListViewHolder(TaskFragment);
     }
 
@@ -29,7 +30,7 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return 100;
     }
-    //STEP78
+    //TODO : step 1-8 make  A view Holder Class hold the fragment
     public static class TaskListViewHolder extends RecyclerView.ViewHolder{
         public TaskListViewHolder(@NonNull View itemView){
             super(itemView);

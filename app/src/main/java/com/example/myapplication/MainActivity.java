@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +11,8 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.myapplication.Adabter.TaskListRecyclerViewAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,10 +47,26 @@ public class MainActivity extends AppCompatActivity {
         setuptaskbtn(findViewById(R.id.btnSetting), new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToSettingIntent = new Intent(MainActivity.this, TestActivity.class);
+                Intent goToSettingIntent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(goToSettingIntent);
             }
         });
+        setUpTaskListRecyclerView();
+    }
+
+    private void setUpTaskListRecyclerView(){
+        //TODO : step 1-1 Add a RV to Activity
+        //TODO : step 1-2 grab the  RV
+        RecyclerView TaskListRecyclerView = findViewById(R.id.taskList);
+        //TODO : step 1-3 set Layout manager of RV TO LinearLayoutManager
+        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
+
+        TaskListRecyclerView.setLayoutManager(layoutManager);
+
+        //TODO : step 1-5 Create RV Adapter
+        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter();
+        TaskListRecyclerView.setAdapter(adapter);
+
     }
 
     @Override

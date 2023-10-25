@@ -17,6 +17,6 @@
     <string name="nothing">Nothing!!</string>
     <string name="user_name">UserName</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Blank Tasks</string>
+    <string name="hello_blank_fragment">Blank Task</string>
 
 </resources>

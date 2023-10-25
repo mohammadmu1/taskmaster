@@ -1,8 +1,14 @@
 package com.example.myapplication.Model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.example.myapplication.Enum.State;
 //TODO STEP 2-1 CREATE CLASS FOR DATA
+@Entity
 public class Task {
+    @PrimaryKey(autoGenerate = true)
+    private Long id;
     private String title;
     private String body;
     private State state;

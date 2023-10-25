@@ -1,9 +1,13 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.myapplication.Adabter.TaskListRecyclerViewAdapter;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -12,16 +16,13 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        findViewById(R.id.img).setOnClickListener(V->
 
 
-                {
-                    Intent goToSitting= new Intent(TestActivity.this,SettingActivity.class);
-                    startActivity(goToSitting);
 
-                }
+    }
 
-        );}
+
+
 
 
 }

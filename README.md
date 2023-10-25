@@ -1,7 +1,19 @@
 # taskmaster
 ## Description
 
-The Task Master mobile application features 6 main pages:
+# lab28
+## Home
+![Home](./screenshots/28/home.jpg)
+## task details after click on it at home 
+![TASK1](./screenshots/28/details.jpg)
+1. **Home Page**:
+   - Includes 3 buttons: "Add new Task" , "All Tasks" ,"Setting".
+   - Clickable recyclerView to redirect you to task details.
+
+   2. **task details**:
+   - Show you all task details after click on it 
+
+
 
 # lab 27
 

@@ -13,11 +13,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.Adabter.TaskListRecyclerViewAdapter;
+import com.example.myapplication.Enum.State;
+import com.example.myapplication.Model.Task;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
-    public static final String TASK_NAME_TAG = "taskName";
+
+    public static final String TASK_NAME_TAG ="taskName";
+    public static final String TASK_BODY_TAG ="taskBody";
+    public static final String TASK_STATE_TAG ="taskState";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +71,23 @@ public class MainActivity extends AppCompatActivity {
 
         TaskListRecyclerView.setLayoutManager(layoutManager);
 
+
+
+
+        //TODO : step 2-2 make some data items
+        List<Task> tasks = new ArrayList<>();
+
+        tasks.add(new Task("Task 1", "Description of Task 1", State.NEW));
+        tasks.add(new Task("Task 2", "Description of Task 2", State.ASSIGNED));
+        tasks.add(new Task("Task 3", "Description of Task 3", State.IN_PROGRESS));
+        tasks.add(new Task("Task 4", "Description of Task 4", State.COMPLETE));
+        tasks.add(new Task("Task 5", "Description of Task 5", State.IN_PROGRESS));
+
+
         //TODO : step 1-5 Create RV Adapter
-        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter();
+        //TODO : step 2-3 Hand in data items
+        //TODO : step 3-2 Hand in Activity Context
+        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks , this);
         TaskListRecyclerView.setAdapter(adapter);
 
     }
@@ -79,21 +102,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpTaskButtons() {
-        setUpTaskButton(findViewById(R.id.btnTaskOne), "Task One Name");
-        setUpTaskButton(findViewById(R.id.btnTaskTow), "Task Two Name");
+//        setUpTaskButton(findViewById(R.id.btnTaskOne), "Task One Name");
+//        setUpTaskButton(findViewById(R.id.btnTaskTow), "Task Two Name");
     }
 
     private void setuptaskbtn(Button button, View.OnClickListener clickListener) {
         button.setOnClickListener(clickListener);
     }
 
-    private void setUpTaskButton(Button button, String taskName) {
-        button.setOnClickListener(view -> {
-            Intent goToDetailIntent = new Intent(MainActivity.this, TaskDetailActivity.class);
-            goToDetailIntent.putExtra(MainActivity.TASK_NAME_TAG, taskName);
-            startActivity(goToDetailIntent);
-        });
-    }
+//    private void setUpTaskButton(Button button, String taskName) {
+//        button.setOnClickListener(view -> {
+//            Intent goToDetailIntent = new Intent(MainActivity.this, TaskDetailActivity.class);
+//            goToDetailIntent.putExtra(MainActivity.TASK_NAME_TAG, taskName);
+//            startActivity(goToDetailIntent);
+//        });
+//    }
 
     
 }

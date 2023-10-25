@@ -18,5 +18,11 @@
     <string name="user_name">UserName</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Blank Task</string>
+    <string name="state">State</string>
+    <string name="body">Body</string>
+    <string name="title">Title</string>
+    <string name="task_name">Task Title</string>
+    <string name="task_body">Task Body</string>
+    <string name="task_state">Task State</string>
 
 </resources>

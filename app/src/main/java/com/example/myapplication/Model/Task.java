@@ -1,7 +1,7 @@
 package com.example.myapplication.Model;
 
 import com.example.myapplication.Enum.State;
-
+//TODO STEP 2-1 CREATE CLASS FOR DATA
 public class Task {
     private String title;
     private String body;

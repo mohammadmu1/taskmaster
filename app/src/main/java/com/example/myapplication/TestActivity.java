@@ -16,32 +16,13 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        findViewById(R.id.img).setOnClickListener(V->
 
 
-                {
-                    Intent goToSitting= new Intent(TestActivity.this,SettingActivity.class);
-                    startActivity(goToSitting);
 
-                }
-
-        );
-
-      setUpRecycleViewList();
     }
 
-        //STEP1
-        private void setUpRecycleViewList(){
-            //STEP2
-            RecyclerView taskListRecyclerView = findViewById(R.id.taskList);
-            //STEP3
-            RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
-            taskListRecyclerView.setLayoutManager(layoutManager);
-            //STEP5
-            TaskListRecyclerViewAdapter adapter=new TaskListRecyclerViewAdapter();
-            taskListRecyclerView.setAdapter(adapter);
 
-        }
+
 
 
 }

@@ -16,16 +16,36 @@ public class TaskDetailActivity extends AppCompatActivity {
 
         Intent callingIntent = getIntent();
         String taskNameString = null;
+        String taskBodyString = null;
+        String taskStateEnum = null;
 
         if(callingIntent != null){
             taskNameString = callingIntent.getStringExtra(MainActivity.TASK_NAME_TAG);
+            taskBodyString = callingIntent.getStringExtra(MainActivity.TASK_BODY_TAG);
+            taskStateEnum = callingIntent.getStringExtra(MainActivity.TASK_STATE_TAG);
 
-            TextView taskTextView = findViewById(R.id.taskDetailTxt);
+            TextView taskNameTextView = (TextView) findViewById(R.id.taskNameTxt);
+            TextView taskBodyTextView = (TextView) findViewById(R.id.taskBodyTxt);
+            TextView taskStateTextView = (TextView) findViewById(R.id.taskStateTxt);
 
             if (taskNameString != null){
-                taskTextView.setText(taskNameString);
+                taskNameTextView.setText(taskNameString);
             }else {
-                taskTextView.setText("Task Unknown");
+                taskNameTextView.setText("Task Unknown");
+            }
+
+            if (taskBodyString != null){
+                taskBodyTextView.setText(taskBodyString);
+            }else {
+                taskBodyTextView.setText("Body Unknown");
+            }
+
+            if (taskStateEnum != null){
+//
+                taskStateTextView.setText(taskStateEnum.toString());
+
+            }else {
+                taskStateTextView.setText("State Unknown");
             }
 
         }

@@ -19,6 +19,6 @@ public interface TaskDAO {
     @Query("select * from Task ORDER BY title ASC")
     public List<Task> findAllSortedByName();
 
-    @Query("select * from Task where id = :id")
+    @Query("select * from Task where id = :id")//(:id) : bind parameter take value from the function below (Long id)
     Task findByAnId(long id);
 }

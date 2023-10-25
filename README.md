@@ -10,7 +10,7 @@
    - Includes 3 buttons: "Add new Task" , "All Tasks" ,"Setting".
    - Clickable recyclerView to redirect you to task details.
 
-   2. **task details**:
+2. **task details**:
    - Show you all task details after click on it 
 
 

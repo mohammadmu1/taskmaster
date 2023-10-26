@@ -1,6 +1,28 @@
 # taskmaster
 ## Description
 
+
+# lab28
+## Home show tasks from database
+![Home](./screenshots/29/home.jpg)
+## task details after click on it at home 
+![TASK1](./screenshots/29/details%20(2).jpg)
+## add task to database
+![add task](./screenshots/29/add.jpg)
+
+1. **Home Page**:
+   - Includes 3 buttons: "Add new Task" , "All Tasks" ,"Setting".
+   - Clickable recyclerView to redirect you to task details.
+
+2. **task details**:
+   - Show you all task details after click on it 
+
+
+ 3. **Add New Task Page**:
+   - Contains an "Add Task" button that, when clicked, shows a "Submitted" snackbar on the page.
+   - Allows users to input task description and task title and category.
+
+
 # lab28
 ## Home
 ![Home](./screenshots/28/home.jpg)

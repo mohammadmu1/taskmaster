@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.Adabter.TaskListRecyclerViewAdapter;
+import com.example.myapplication.DataBase.TasksDataBase;
 import com.example.myapplication.Enum.State;
 import com.example.myapplication.Model.Task;
 
@@ -20,17 +22,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     SharedPreferences preferences;
-
+    List<Task> tasks =null;
     public static final String TASK_NAME_TAG ="taskName";
     public static final String TASK_BODY_TAG ="taskBody";
     public static final String TASK_STATE_TAG ="taskState";
+    public static  final String DATABASE_NAME = "task";
+
+    TaskListRecyclerViewAdapter adapter;
+    TasksDataBase tasksDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tasksDataBase= Room.databaseBuilder(
+                        getApplicationContext(),
+                        TasksDataBase.class,
+                        DATABASE_NAME)
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
+
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -75,19 +89,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         //TODO : step 2-2 make some data items
-        List<Task> tasks = new ArrayList<>();
 
-        tasks.add(new Task("Task 1", "Description of Task 1", State.NEW));
-        tasks.add(new Task("Task 2", "Description of Task 2", State.ASSIGNED));
-        tasks.add(new Task("Task 3", "Description of Task 3", State.IN_PROGRESS));
-        tasks.add(new Task("Task 4", "Description of Task 4", State.COMPLETE));
-        tasks.add(new Task("Task 5", "Description of Task 5", State.IN_PROGRESS));
-
+        tasks= tasksDataBase.taskDao().findAll();
+//
 
         //TODO : step 1-5 Create RV Adapter
         //TODO : step 2-3 Hand in data items
         //TODO : step 3-2 Hand in Activity Context
-        TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks , this);
+         adapter = new TaskListRecyclerViewAdapter(tasks , this);
         TaskListRecyclerView.setAdapter(adapter);
 
     }
@@ -99,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
         String username = preferences.getString(SettingActivity.USERNAME_TAG, "No Username");
 
         ((TextView) findViewById(R.id.usernameTxt)).setText(getString(R.string.username_with_input, username));
+
+        tasks.clear();
+        tasks.addAll(tasksDataBase.taskDao().findAll());
+        adapter.notifyDataSetChanged();
     }
 
     private void setUpTaskButtons() {
@@ -118,5 +131,5 @@ public class MainActivity extends AppCompatActivity {
 //        });
 //    }
 
-    
+
 }

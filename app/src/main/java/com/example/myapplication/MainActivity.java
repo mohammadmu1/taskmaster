@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.Adabter.TaskListRecyclerViewAdapter;
+import com.example.myapplication.DataBase.TasksDataBase;
 import com.example.myapplication.Enum.State;
 import com.example.myapplication.Model.Task;
 
@@ -26,12 +28,23 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_NAME_TAG ="taskName";
     public static final String TASK_BODY_TAG ="taskBody";
     public static final String TASK_STATE_TAG ="taskState";
+    public static  final String DATABASE_NAME = "task";
+
+    TasksDataBase tasksDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        tasksDataBase= Room.databaseBuilder(
+                        getApplicationContext(),
+                        TasksDataBase.class,
+                        DATABASE_NAME)
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
+                .build();
+        tasksDataBase.taskDao().findAll();
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         setUpTaskButtons();
@@ -77,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
         //TODO : step 2-2 make some data items
         List<Task> tasks = new ArrayList<>();
 
-        tasks.add(new Task("Task 1", "Description of Task 1", State.NEW));
-        tasks.add(new Task("Task 2", "Description of Task 2", State.ASSIGNED));
-        tasks.add(new Task("Task 3", "Description of Task 3", State.IN_PROGRESS));
-        tasks.add(new Task("Task 4", "Description of Task 4", State.COMPLETE));
-        tasks.add(new Task("Task 5", "Description of Task 5", State.IN_PROGRESS));
+//        tasks.add(new Task("Task 1", "Description of Task 1", State.NEW));
+//        tasks.add(new Task("Task 2", "Description of Task 2", State.ASSIGNED));
+//        tasks.add(new Task("Task 3", "Description of Task 3", State.IN_PROGRESS));
+//        tasks.add(new Task("Task 4", "Description of Task 4", State.COMPLETE));
+//        tasks.add(new Task("Task 5", "Description of Task 5", State.IN_PROGRESS));
 
 
         //TODO : step 1-5 Create RV Adapter

@@ -1,64 +1,83 @@
 package com.example.myapplication;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Task;
 import com.example.myapplication.Adabter.TaskListRecyclerViewAdapter;
-import com.example.myapplication.DataBase.TasksDataBase;
-import com.example.myapplication.Enum.State;
-import com.example.myapplication.Model.Task;
+
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
-    SharedPreferences preferences;
-    List<Task> tasks =null;
-    public static final String TASK_NAME_TAG ="taskName";
-    public static final String TASK_BODY_TAG ="taskBody";
-    public static final String TASK_STATE_TAG ="taskState";
-    public static  final String DATABASE_NAME = "task";
 
+    SharedPreferences preferences;
+    List<Task> tasks = null;
     TaskListRecyclerViewAdapter adapter;
-    TasksDataBase tasksDataBase;
+    public static final String TASK_NAME_TAG = "taskName";
+    public static final String TASK_BODY_TAG = "taskBody";
+    public static final String TASK_STATE_TAG = "taskState";
+    public static final String DATABASE_NAME = "tasks";
+    public static final String TAG = "TaskActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tasksDataBase= Room.databaseBuilder(
-                        getApplicationContext(),
-                        TasksDataBase.class,
-                        DATABASE_NAME)
-                .fallbackToDestructiveMigration()
-                .allowMainThreadQueries()
-                .build();
-
-
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        setUpTaskButtons();
+        tasks = new ArrayList<>();
 
-        setuptaskbtn(findViewById(R.id.addTaskbtn), new View.OnClickListener() {
+        Amplify.API.query(
+                ModelQuery.list(Task.class),
+                success -> {
+                    Log.i(TAG, "Updated Tasks Successfully!");
+                    tasks.clear();
+                    for(Task databaseTask : success.getData()){
+                        tasks.add(databaseTask);
+                    }
+                    runOnUiThread(() -> {
+                        adapter.notifyDataSetChanged();
+                    });
+                },
+
+
+                failure -> Log.i(TAG, "failed with this response: ")
+        );
+
+
+        setUpTaskListRecyclerView();
+
+        //step1: get a UI element By id
+        Button addTaskButton = findViewById(R.id.addTaskBtn);
+        Button allTasksButton = findViewById(R.id.allTasksBtn);
+        Button settingButton = findViewById(R.id.btnSetting);
+
+        addTaskButton.setOnClickListener(new View.OnClickListener() {
+            //step 3: Attach a callback function with onClick() method
             @Override
             public void onClick(View view) {
+                // step 4: Do stuff in the callback
                 Intent goToAddTaskIntent = new Intent(MainActivity.this, AddTaskActivity.class);
                 startActivity(goToAddTaskIntent);
             }
         });
 
-        setuptaskbtn(findViewById(R.id.allTasksbtn), new View.OnClickListener() {
+
+        allTasksButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToAllTaskIntent = new Intent(MainActivity.this, AllTasksActivity.class);
@@ -66,39 +85,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setuptaskbtn(findViewById(R.id.btnSetting), new View.OnClickListener() {
+
+        settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent goToSettingIntent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(goToSettingIntent);
             }
         });
-        setUpTaskListRecyclerView();
-    }
-
-    private void setUpTaskListRecyclerView(){
-        //TODO : step 1-1 Add a RV to Activity
-        //TODO : step 1-2 grab the  RV
-        RecyclerView TaskListRecyclerView = findViewById(R.id.taskList);
-        //TODO : step 1-3 set Layout manager of RV TO LinearLayoutManager
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this);
-
-        TaskListRecyclerView.setLayoutManager(layoutManager);
-
-
-
-
-        //TODO : step 2-2 make some data items
-
-        tasks= tasksDataBase.taskDao().findAll();
-//
-
-        //TODO : step 1-5 Create RV Adapter
-        //TODO : step 2-3 Hand in data items
-        //TODO : step 3-2 Hand in Activity Context
-         adapter = new TaskListRecyclerViewAdapter(tasks , this);
-        TaskListRecyclerView.setAdapter(adapter);
-
     }
 
     @Override
@@ -109,27 +103,22 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.usernameTxt)).setText(getString(R.string.username_with_input, username));
 
-        tasks.clear();
-        tasks.addAll(tasksDataBase.taskDao().findAll());
-        adapter.notifyDataSetChanged();
     }
 
-    private void setUpTaskButtons() {
-//        setUpTaskButton(findViewById(R.id.btnTaskOne), "Task One Name");
-//        setUpTaskButton(findViewById(R.id.btnTaskTow), "Task Two Name");
+
+    private void setUpTaskListRecyclerView() {
+        //TODO: step 1-1: Add a RecyclerView to the Activity in the WSYIWYG editor
+        //TODO: step 1-2: grab the RecyclerView
+        RecyclerView taskListRecyclerView = (RecyclerView) findViewById(R.id.taskListRecyclerView);
+
+        //TODO: step 1-3: set the layout manager of the RecyclerView to a LinerLayoutManager
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        taskListRecyclerView.setLayoutManager(layoutManager);
+
+
+        //TODO: step 1-5: create and attach the RecyclerView.Adapter
+        adapter = new TaskListRecyclerViewAdapter(tasks, this);
+        taskListRecyclerView.setAdapter(adapter);
+
     }
-
-    private void setuptaskbtn(Button button, View.OnClickListener clickListener) {
-        button.setOnClickListener(clickListener);
-    }
-
-//    private void setUpTaskButton(Button button, String taskName) {
-//        button.setOnClickListener(view -> {
-//            Intent goToDetailIntent = new Intent(MainActivity.this, TaskDetailActivity.class);
-//            goToDetailIntent.putExtra(MainActivity.TASK_NAME_TAG, taskName);
-//            startActivity(goToDetailIntent);
-//        });
-//    }
-
-
 }

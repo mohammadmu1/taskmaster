@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".activity.TasksAmplifyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -10,37 +11,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication"
+        android:theme="@style/Theme.Taskmaster"
         tools:targetApi="31">
         <activity
-            android:name=".TestActivity"
+            android:name=".activity.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".MyAdapter"
+            android:name=".activity.TaskDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".activity.AllTasksActivity"
             android:exported="false" />
         <activity
-            android:name=".AllTasksActivity"
+            android:name=".activity.AddTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".TaskDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SettingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".userActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddTaskActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AllTaskActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

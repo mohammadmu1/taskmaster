@@ -1,86 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".activity.MainActivity"
-    tools:layout_editor_absoluteX="159dp"
-    tools:layout_editor_absoluteY="2dp">
+    android:background="#F8F8F8"
+    android:backgroundTint="#DAD1D1"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:textAlignment="center"
+    tools:context=".activity.MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="125dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/my_tasks"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+        android:textSize="26sp" />
 
-    <Button
-        android:id="@+id/allTasksbtn"
-        android:layout_width="112dp"
-        android:layout_height="62dp"
-        android:text="@string/all_tasks"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp">
 
-    <Button
-        android:id="@+id/btnSetting"
-        android:layout_width="112dp"
-        android:layout_height="62dp"
-        android:text="@string/setting"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameTxt"
-        app:layout_constraintVertical_bias="0.731" />
+        <TableRow>
 
-    <Button
-        android:id="@+id/addTaskbtn"
-        android:layout_width="112dp"
-        android:layout_height="62dp"
-        android:text="@string/add_task"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.748" />
+            <Button
+                android:id="@+id/allTasksBtn"
+                android:layout_width="0dp"
+                android:layout_height="62dp"
+                android:layout_weight="1"
+                android:text="@string/all_tasks" />
+
+            <Button
+                android:id="@+id/btnSetting"
+                android:layout_width="0dp"
+                android:layout_height="62dp"
+                android:layout_weight="1"
+                android:text="@string/setting" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/addTaskBtn"
+                android:layout_width="0dp"
+                android:layout_height="62dp"
+                android:layout_weight="1"
+                android:text="@string/add_task" />
+        </TableRow>
+    </TableLayout>
 
     <TextView
         android:id="@+id/usernameTxt"
-        android:layout_width="253dp"
-        android:layout_height="73dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/nothing"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/taskList"
-        app:layout_constraintVertical_bias="0.072" />
+        android:textSize="17sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/taskList"
-        android:layout_width="72dp"
-        android:layout_height="197dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/taskListRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="204dp"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:layout_marginTop="16dp"
+        android:background="#DAD1D1"
+        android:backgroundTint="#CCCECF"
+        android:textAlignment="center" />
+</LinearLayout>

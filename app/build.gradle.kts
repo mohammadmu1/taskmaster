@@ -34,6 +34,11 @@ android {
 dependencies {
     val room_version  = "2.6.0"
 
+
+    implementation ("com.amplifyframework:aws-api:1.33.0")
+
+    implementation ("com.amplifyframework:core:2.14.2")
+    implementation ("com.amplifyframework:aws-datastore:1.35.3")
     implementation ("androidx.room:room-runtime:$room_version")
     annotationProcessor( "androidx.room:room-compiler:$room_version")
     testImplementation ("androidx.room:room-testing:$room_version")

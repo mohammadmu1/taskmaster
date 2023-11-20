@@ -1,7 +1,7 @@
 package com.example.myapplication;
 ;
 
-import androidx.appcompat.app.AppCompatActivity;
+import  androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,9 +40,9 @@ public class AddTaskActivity extends AppCompatActivity {
         Button addTasksButton = (Button) findViewById(R.id.addTaskToTotalbtn);
         Button back = (Button) findViewById(R.id.backbtn2);
 
-        addTasksButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        addTasksButton.setOnClickListener(v-> {
+
+
 
                 String title = ((EditText)findViewById(R.id.taskTitleEdtTxt)).getText().toString();
                 String body = ((EditText)findViewById(R.id.taskBodyEdtTxt)).getText().toString();
@@ -58,7 +58,7 @@ public class AddTaskActivity extends AppCompatActivity {
                         failureResponse -> Log.e(TAG, "AddTaskActivity.onCreate(): failed with this response" + failureResponse)// in case we have a failed response
                 );
 
-            }
+
         });
 
         back.setOnClickListener(new View.OnClickListener() {

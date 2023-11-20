@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_NAME_TAG = "taskName";
     public static final String TASK_BODY_TAG = "taskBody";
     public static final String TASK_STATE_TAG = "taskState";
-    public static final String DATABASE_NAME = "tasks";
+//    public static final String DATABASE_NAME = "tasks";
     public static final String TAG = "TaskActivity";
 
 
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         tasks = new ArrayList<>();
-
+        setUpTaskListRecyclerView();
         Amplify.API.query(
                 ModelQuery.list(Task.class),
                 success -> {
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-        setUpTaskListRecyclerView();
+
 
         //step1: get a UI element By id
         Button addTaskButton = findViewById(R.id.addTaskBtn);

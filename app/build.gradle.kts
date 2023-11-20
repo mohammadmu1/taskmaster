@@ -1,3 +1,5 @@
+import java.util.regex.Pattern.compile
+
 plugins {
     id("com.android.application")
 }
@@ -12,6 +14,9 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+
+
+        multiDexEnabled =true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,12 +37,17 @@ android {
 }
 
 dependencies {
-    val room_version  = "2.6.0"
+//    val room_version  = "2.6.0"
 
-    implementation ("androidx.room:room-runtime:$room_version")
-    annotationProcessor( "androidx.room:room-compiler:$room_version")
-    testImplementation ("androidx.room:room-testing:$room_version")
-    implementation ("androidx.room:room-runtime")
+
+    implementation ("com.amplifyframework:aws-api:1.33.0")
+    compile ("com.android.support:multidex:1.0.1")
+    implementation ("com.amplifyframework:core:2.14.2")
+    implementation ("com.amplifyframework:aws-datastore:1.35.3")
+//    implementation ("androidx.room:room-runtime:$room_version")
+//    annotationProcessor( "androidx.room:room-compiler:$room_version")
+//    testImplementation ("androidx.room:room-testing:$room_version")
+//    implementation ("androidx.room:room-runtime")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

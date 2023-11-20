@@ -2,6 +2,14 @@
 ## Description
 
 
+# lab32
+Updated all references to the Task data to instead use AWS Amplify to access data in DynamoDB instead of in Room.
+
+
+
+Modified Add Task form to save the data entered in as a Task to DynamoDB.
+
+
 # lab30
 ## Ui Test
 ![add task test](./screenshots/29/AddTaskTest.png)

@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Task;
 import com.example.myapplication.MainActivity;
-import com.example.myapplication.Model.Task;
 import com.example.myapplication.R;
 import com.example.myapplication.TaskDetailActivity;
 
@@ -21,56 +21,61 @@ import java.util.List;
 //TODO : step 3-1 clean up the RV.Adapter to reference to actually use TaskListRV
 public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRecyclerViewAdapter.TaskListViewHolder> {
 
-    //TODO : step 2-3 Hand in data items
+    //TODO: step: 2-3: Hand in data items
     List<Task> tasks;
-    //TODO : step 3-2 Hand in Activity Context
+
+    //TODO: step 3-2: Hand in the Activity context
     Context callingActivity;
-    public TaskListRecyclerViewAdapter(List<Task> tasks , Context callingActivity) {
-        this.callingActivity=callingActivity;
+
+    //TODO: step: 2-3: Hand in data items
+    public TaskListRecyclerViewAdapter(List<Task> tasks,Context callingActivity) {
         this.tasks = tasks;
+        this.callingActivity=callingActivity;
     }
 
-    //TODO : step 1-7 inflate fragment
+    //TODO: step 1-7: start Inflate fragment
     @NonNull
     @Override
     public TaskListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View productFragment = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_task_list, parent,false);
 
-        View TaskFragment = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_task_list,parent,false);
-        //TODO : step 1-9 Attach fragment to ViewHolder
-        return new TaskListViewHolder(TaskFragment);
+        //TODO: step 1-9: Attach fragment to viewHolder
+        return new TaskListViewHolder(productFragment);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TaskListViewHolder holder, int position) {
 
-        //TODO : step 2-4 Bind data item to frgment inside view holder
-        TextView taskFragmentTextView = holder.itemView.findViewById(R.id.taskFragmentTextView);
+        //TODO: step 2-4: Bind data items to Fragment inside of ViewHolder
+        TextView taskFragmentTextView = (TextView) holder.itemView.findViewById(R.id.taskFragmentTextView);
         String taskName = tasks.get(position).getTitle();
-        String taskBody = tasks.get(position).getBody();
-        String taskState = String.valueOf(tasks.get(position).getState());
+        String taskBody = tasks.get(position).getDescription();
+        String taskState = String.valueOf(tasks.get(position).getTaskStatusEnum());
+        taskFragmentTextView.setText(position +" - "+ taskName);
 
-        taskFragmentTextView.setText((position+1) + " " + taskName);
-
-        //TODO : step 3-3 create a onClickListener make intent to call it to go to another activity
-        View listViewHolder = holder.itemView;
-        listViewHolder.setOnClickListener(view -> {
-            Intent  goToTaskIntent = new Intent(callingActivity , TaskDetailActivity.class);
-            goToTaskIntent.putExtra(MainActivity.TASK_NAME_TAG,  taskName);
-            goToTaskIntent.putExtra(MainActivity.TASK_BODY_TAG,  taskBody);
-            goToTaskIntent.putExtra(MainActivity.TASK_STATE_TAG, taskState);
-            callingActivity.startActivity(goToTaskIntent);
+        //TODO: step 3-3: create a onClickListener, make an intent inside it and call this intent with extra to go to another activity
+        View productViewHolder = holder.itemView;
+        productViewHolder.setOnClickListener(view -> {
+            Intent goToOrderFormIntent = new Intent(callingActivity, TaskDetailActivity.class);
+            goToOrderFormIntent.putExtra(MainActivity.TASK_NAME_TAG,  taskName);
+            goToOrderFormIntent.putExtra(MainActivity.TASK_BODY_TAG,  taskBody);
+            goToOrderFormIntent.putExtra(MainActivity.TASK_STATE_TAG, taskState);
+            callingActivity.startActivity(goToOrderFormIntent);
         });
     }
 
     @Override
     public int getItemCount() {
-        //TODO : step 2-4 Make size of the list dynamic
         return tasks.size();
     }
-    //TODO : step 1-8 make  A view Holder Class hold the fragment
+
+
+    // TODO: step 1-8: make a ViewHolder class to hold a fragment
     public static class TaskListViewHolder extends RecyclerView.ViewHolder{
-        public TaskListViewHolder(@NonNull View itemView){
+        public TaskListViewHolder(@NonNull View itemView) {
             super(itemView);
         }
     }
+
+
 }

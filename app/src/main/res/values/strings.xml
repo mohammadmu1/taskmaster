@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Taskmaster</string>
     <string name="Lorem_Ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac faucibus libero. Sed auctor mattis odio. Suspendisse gravida ipsum vitae tincidunt interdum. Nam consectetur ut mauris at ultricies. Proin eget justo id ipsum feugiat auctor nec eu massa. Maecenas dapibus turpis sed vulputate faucibus. Phasellus magna eros, elementum in mauris sed, vulputate finibus arcu. Nam justo est, dignissim nec ante sit amet, hendrerit auctor tellus. Nam feugiat, nisi sed placerat interdum, sem eros tempor lorem, eget pretium orci tortor id purus. Suspendisse sit amet est sodales, scelerisque nunc a, condimentum lacus. Pellentesque aliquam massa in est eleifend ultricies. Praesent at justo nec elit iaculis dignissim. Ut ullamcorper tortor eu luctus tincidunt. Sed dictum eros malesuada, sollicitudin purus eu, fringilla massa.</string>
-    <string name="task_detail">Task Detail</string>
+    <string name="task_name">Task Title</string>
+    <string name="task_body">Task Body</string>
+    <string name="task_state">Task State</string>
     <string name="username">Username</string>
     <string name="enter_username">Enter Username</string>
     <string name="save">Save</string>
@@ -15,14 +17,13 @@
     <string name="task_one">Task One</string>
     <string name="task_two">Task Two</string>
     <string name="nothing">Nothing!!</string>
-    <string name="user_name">UserName</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Blank Task</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="state">State</string>
     <string name="body">Body</string>
     <string name="title">Title</string>
-    <string name="task_name">Task Title</string>
-    <string name="task_body">Task Body</string>
-    <string name="task_state">Task State</string>
-
+    <string name="task_title">Task Title</string>
+    <string name="task_description">Task Description</string>
+    <string name="total_task">Total Task:</string>
+    <string name="back">Back</string>
+    <string name="_0">0</string>
 </resources>

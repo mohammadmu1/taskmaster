@@ -42,35 +42,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //
-//        Team team1 = Team.builder()
-//                .name("Team 1")
-//                .build();
-//
-//        Team team2 = Team.builder()
-//                .name("Team 2")
-//                .build();
-//
-//        Team team3 = Team.builder()
-//                .name("Team  3")
-//                .build();
-//
-//
-//               Amplify.API.mutate(
-//               ModelMutation.create(team1),
-//               successResponse -> Log.i(TAG, "MainActivity.onCreate(): made a Team successfully"),
-//               failureResponse -> Log.i(TAG, "MainActivity.onCreate(): Team failed with this response: "+failureResponse)
-//       );
-//        Amplify.API.mutate(
-//                ModelMutation.create(team2),
-//                successResponse -> Log.i(TAG, "MainActivity.onCreate(): made a Team successfully"),
-//                failureResponse -> Log.i(TAG, "MainActivity.onCreate(): Team failed with this response: "+failureResponse)
-//        );
-//        Amplify.API.mutate(
-//                ModelMutation.create(team3),
-//                successResponse -> Log.i(TAG, "MainActivity.onCreate(): made a Team successfully"),
-//                failureResponse -> Log.i(TAG, "MainActivity.onCreate(): Team failed with this response: "+failureResponse)
-//        );
-
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 

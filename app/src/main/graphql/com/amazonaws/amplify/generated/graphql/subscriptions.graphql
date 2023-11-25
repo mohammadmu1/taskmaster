@@ -6,6 +6,14 @@ subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
     title
     description
     taskStatusEnum
+    teamId
+    teamName {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -18,6 +26,14 @@ subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
     title
     description
     taskStatusEnum
+    teamId
+    teamName {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -30,6 +46,56 @@ subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
     title
     description
     taskStatusEnum
+    teamId
+    teamName {
+      id
+      name
+      createdAt
+      updatedAt
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnCreateTeam($filter: ModelSubscriptionTeamFilterInput) {
+  onCreateTeam(filter: $filter) {
+    id
+    name
+    tasks {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnUpdateTeam($filter: ModelSubscriptionTeamFilterInput) {
+  onUpdateTeam(filter: $filter) {
+    id
+    name
+    tasks {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnDeleteTeam($filter: ModelSubscriptionTeamFilterInput) {
+  onDeleteTeam(filter: $filter) {
+    id
+    name
+    tasks {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename

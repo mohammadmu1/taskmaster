@@ -1,4 +1,5 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,14 +13,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
-import com.example.myapplication.Adabter.TaskListRecyclerViewAdapter;
+import com.amplifyframework.datastore.generated.model.Team;
+import com.example.myapplication.R;
+import com.example.myapplication.activity.Adabter.TaskListRecyclerViewAdapter;
 
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
@@ -28,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_NAME_TAG = "taskName";
     public static final String TASK_BODY_TAG = "taskBody";
     public static final String TASK_STATE_TAG = "taskState";
-//    public static final String DATABASE_NAME = "tasks";
+    public static final String DATABASE_NAME = "tasks";
     public static final String TAG = "TaskActivity";
 
 
@@ -36,17 +41,47 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//
+//        Team team1 = Team.builder()
+//                .name("Team 1")
+//                .build();
+//
+//        Team team2 = Team.builder()
+//                .name("Team 2")
+//                .build();
+//
+//        Team team3 = Team.builder()
+//                .name("Team  3")
+//                .build();
+//
+//
+//               Amplify.API.mutate(
+//               ModelMutation.create(team1),
+//               successResponse -> Log.i(TAG, "MainActivity.onCreate(): made a Team successfully"),
+//               failureResponse -> Log.i(TAG, "MainActivity.onCreate(): Team failed with this response: "+failureResponse)
+//       );
+//        Amplify.API.mutate(
+//                ModelMutation.create(team2),
+//                successResponse -> Log.i(TAG, "MainActivity.onCreate(): made a Team successfully"),
+//                failureResponse -> Log.i(TAG, "MainActivity.onCreate(): Team failed with this response: "+failureResponse)
+//        );
+//        Amplify.API.mutate(
+//                ModelMutation.create(team3),
+//                successResponse -> Log.i(TAG, "MainActivity.onCreate(): made a Team successfully"),
+//                failureResponse -> Log.i(TAG, "MainActivity.onCreate(): Team failed with this response: "+failureResponse)
+//        );
+
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         tasks = new ArrayList<>();
-        setUpTaskListRecyclerView();
+
         Amplify.API.query(
                 ModelQuery.list(Task.class),
                 success -> {
                     Log.i(TAG, "Updated Tasks Successfully!");
                     tasks.clear();
-                    for(Task databaseTask : success.getData()){
+                    for (Task databaseTask : success.getData()) {
                         tasks.add(databaseTask);
                     }
                     runOnUiThread(() -> {
@@ -59,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-
+        setUpTaskListRecyclerView();
 
         //step1: get a UI element By id
         Button addTaskButton = findViewById(R.id.addTaskBtn);
@@ -102,6 +137,32 @@ public class MainActivity extends AppCompatActivity {
         String username = preferences.getString(SettingActivity.USERNAME_TAG, "No Username");
 
         ((TextView) findViewById(R.id.usernameTxt)).setText(getString(R.string.username_with_input, username));
+
+        String userTeamName = preferences.getString(SettingActivity.USER_TEAM_TAG, "No Team");
+
+        ((TextView) findViewById(R.id.teamNameTxt)).setText(getString(R.string.team_with_input, userTeamName));
+
+        Amplify.API.query(
+                ModelQuery.list(Task.class),
+                success -> {
+                    Log.i(TAG, "Updated Tasks Successfully!");
+                    tasks.clear();
+                    for(Task databaseTask : success.getData()){
+                        if (userTeamName.equals("No Team")){
+                            tasks.add(databaseTask);
+                        }
+                        else if (databaseTask.getTeamName().getName().equals(userTeamName)) {
+                            tasks.add(databaseTask);
+                        }
+                    }
+                    runOnUiThread(() -> {
+                        adapter.notifyDataSetChanged();
+                    });
+                },
+
+                failure -> Log.i(TAG, "failed with this response: ")
+        );
+
 
     }
 

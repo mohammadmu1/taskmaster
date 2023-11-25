@@ -1,4 +1,4 @@
-package com.example.myapplication.Enum;
+package com.example.myapplication.activity.Enum;
 
 import androidx.annotation.NonNull;
 

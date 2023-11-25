@@ -1,6 +1,28 @@
 # taskmaster
 ## Description
 
+# lab33
+## Task Management System Update
+
+### Second Entity Creation
+
+A second entity for teams has been introduced, featuring a name attribute and a task list.
+
+### Task Ownership Restructured
+
+Tasks have been updated to be associated with teams. Three default teams have been established: "Team 1" ,"Team 2", and "Team 3."
+
+### Improved Task Creation Process
+
+A spinner has been implemented to facilitate team selection when creating a task.
+
+### Enhanced User Experience
+
+Users now have the option to choose a team for task assignment. The homepage tasks are filterable based on the selected team.
+
+![Home](./screenshots/33/MAIN33.png)
+
+![Sitting](./screenshots/33/SITTING33.png)
 
 # lab32
 Updated all references to the Task data to instead use AWS Amplify to access data in DynamoDB instead of in Room.

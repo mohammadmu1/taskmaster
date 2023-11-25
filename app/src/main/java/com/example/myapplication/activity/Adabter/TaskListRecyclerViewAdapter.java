@@ -1,4 +1,4 @@
-package com.example.myapplication.Adabter;
+package com.example.myapplication.activity.Adabter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.Task;
-import com.example.myapplication.MainActivity;
+import com.example.myapplication.activity.MainActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.TaskDetailActivity;
+import com.example.myapplication.activity.TaskDetailActivity;
 
 import java.util.List;
 

@@ -9,6 +9,7 @@
     <string name="save">Save</string>
     <string name="setting_page">Setting Page</string>
     <string name="username_with_input">Username: %1$s</string>
+    <string name="team_with_input">Team : %1$s</string>
     <string name="my_tasks">My Tasks</string>
     <string name="todo">TODO</string>
     <string name="add_task">Add Task</string>
@@ -26,4 +27,5 @@
     <string name="total_task">Total Task:</string>
     <string name="back">Back</string>
     <string name="_0">0</string>
+    <string name="teamname">TeamName</string>
 </resources>

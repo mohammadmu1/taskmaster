@@ -12,9 +12,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.datastore.generated.model.Task;
-import com.amplifyframework.datastore.generated.model.TaskStatusEnum;
-import com.example.myapplication.R;
 
 import java.util.Date;
 

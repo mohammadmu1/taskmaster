@@ -1,12 +1,9 @@
-package com.example.myapplication.Adabter;
-
-import android.content.Context;
+package com.example.myapplication.Adabter;import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +14,9 @@ import com.example.myapplication.TaskDetailActivity;
 
 import java.util.List;
 
-//TODO : step 1-4 Make a Class to Manage RV
-//TODO : step 3-1 clean up the RV.Adapter to reference to actually use TaskListRV
+//TODO: step 1-4: Make a class whose purpose is to manage the RecyclerView
+//TODO: step 3-1: clean up the RecyclerView.Adapter reference to actually use ProductListRecyclerViewAdapter
+
 public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRecyclerViewAdapter.TaskListViewHolder> {
 
     //TODO: step: 2-3: Hand in data items

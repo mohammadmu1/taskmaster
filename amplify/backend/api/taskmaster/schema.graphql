@@ -3,7 +3,8 @@ type Task @model @auth(rules: [{allow: public}]) {
   title: String!
   description: String
   taskStatusEnum: TaskStatusEnum
-
+  teamId: ID! @index(name: "byTeam", sortKeyFields: ["title"])
+  teamName: Team @belongsTo(fields: ["teamId"])
 }
 
 enum TaskStatusEnum {
@@ -11,4 +12,11 @@ enum TaskStatusEnum {
   Assigned
   In_Progress
   Complete
+}
+
+type Team @model @auth(rules: [{allow: public}])
+{
+  id: ID!
+  name: String!
+  tasks: [Task] @hasMany(indexName: "byTeam", fields: ["id"])
 }

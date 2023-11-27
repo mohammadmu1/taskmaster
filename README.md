@@ -6,6 +6,7 @@ When clicking on the task, it redirects me to an editing page where I can modify
 ### main before edit task 
 ![home](./screenshots/34/main34.png)
 
+
 ###  edit task paige
 ![home](./screenshots/34/edit34.png)
 
@@ -14,6 +15,7 @@ When clicking on the task, it redirects me to an editing page where I can modify
 
 # lab33
 ## Task Master
+
 
 ### Second Entity Creation
 

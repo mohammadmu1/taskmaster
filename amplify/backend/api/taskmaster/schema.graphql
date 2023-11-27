@@ -17,8 +17,6 @@ enum TaskStatusEnum {
 }
 
 
-
-
 type Team @model @auth(rules: [{allow: public}])
 {
   id: ID!

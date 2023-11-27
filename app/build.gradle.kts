@@ -51,6 +51,7 @@ android {
 }
 
 dependencies {
+
     implementation("com.amplifyframework:aws-api:1.33.0")
     implementation("com.amplifyframework:aws-datastore:1.33.0")
     implementation("com.amplifyframework:aws-datastore:1.35.3")
@@ -74,3 +75,4 @@ dependencies {
 //    implementation("com.amplifyframework:aws-datastore:2.0.0")
 
 }
+

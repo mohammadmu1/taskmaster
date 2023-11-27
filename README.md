@@ -1,8 +1,21 @@
 # taskmaster
 ## Description
+# Lab34
+### update
+When clicking on the task, it redirects me to an editing page where I can modify all the information associated with it.
+### main before edit task 
+![home](./screenshots/34/main34.png)
+
+
+###  edit task paige
+![home](./screenshots/34/edit34.png)
+
+###  home after edit on task 
+![home](./screenshots/34/main%20after%20edit%2034.png)
 
 # lab33
-## Task Management System Update
+## Task Master
+
 
 ### Second Entity Creation
 

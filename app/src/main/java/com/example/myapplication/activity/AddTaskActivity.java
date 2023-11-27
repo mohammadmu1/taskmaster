@@ -1,5 +1,6 @@
 package com.example.myapplication.activity;
-import androidx.appcompat.app.AppCompatActivity;
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,16 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.datastore.generated.model.TaskStatusEnum;
 import com.amplifyframework.datastore.generated.model.Team;
-import com.example.myapplication.activity.Enum.State;
 import com.example.myapplication.R;
+import com.example.myapplication.activity.Enum.State;
 import com.google.android.material.snackbar.Snackbar;
-
 
 import java.util.ArrayList;
 import java.util.Date;

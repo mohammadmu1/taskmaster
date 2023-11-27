@@ -1,9 +1,5 @@
 package com.example.myapplication.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,14 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.amplifyframework.api.graphql.model.ModelMutation;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
-import com.amplifyframework.datastore.generated.model.Team;
 import com.example.myapplication.R;
 import com.example.myapplication.activity.Adabter.TaskListRecyclerViewAdapter;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +30,18 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_NAME_TAG = "taskName";
     public static final String TASK_BODY_TAG = "taskBody";
     public static final String TASK_STATE_TAG = "taskState";
-    public static final String DATABASE_NAME = "tasks";
     public static final String TAG = "TaskActivity";
+    public static final String MAIN_ID_TAG = "Main ID Tag";
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//
+
+
+
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
 
                 failure -> Log.i(TAG, "failed with this response: ")
         );
-
 
     }
 

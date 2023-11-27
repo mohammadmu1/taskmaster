@@ -2,5 +2,7 @@
   "AppSyncApiName": "taskmaster",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2023-11-12T22:20:58.333Z"
+
+  "AuthModeLastUpdated": "2023-11-26T01:47:48.052Z"
+
 }

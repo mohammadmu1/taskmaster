@@ -1,16 +1,20 @@
-package com.example.myapplication.Adabter;import android.content.Context;
+package com.example.myapplication.activity.Adabter;
+
+
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.Task;
-import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.TaskDetailActivity;
+import com.example.myapplication.activity.EditTaskActivity;
+import com.example.myapplication.activity.MainActivity;
 
 import java.util.List;
 
@@ -46,6 +50,10 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
 
         //TODO: step 2-4: Bind data items to Fragment inside of ViewHolder
         TextView taskFragmentTextView = (TextView) holder.itemView.findViewById(R.id.taskFragmentTextView);
+
+        Task task = tasks.get(position);
+
+
         String taskName = tasks.get(position).getTitle();
         String taskBody = tasks.get(position).getDescription();
         String taskState = String.valueOf(tasks.get(position).getTaskStatusEnum());
@@ -54,7 +62,9 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
         //TODO: step 3-3: create a onClickListener, make an intent inside it and call this intent with extra to go to another activity
         View productViewHolder = holder.itemView;
         productViewHolder.setOnClickListener(view -> {
-            Intent goToOrderFormIntent = new Intent(callingActivity, TaskDetailActivity.class);
+            Intent goToOrderFormIntent = new Intent(callingActivity, EditTaskActivity.class);
+
+            goToOrderFormIntent.putExtra(MainActivity.MAIN_ID_TAG,  task.getId());
             goToOrderFormIntent.putExtra(MainActivity.TASK_NAME_TAG,  taskName);
             goToOrderFormIntent.putExtra(MainActivity.TASK_BODY_TAG,  taskBody);
             goToOrderFormIntent.putExtra(MainActivity.TASK_STATE_TAG, taskState);

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,9 @@ import android.widget.Spinner;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Team;
 import com.google.android.material.snackbar.Snackbar;
+import com.example.myapplication.R;
 
 
 import java.util.ArrayList;

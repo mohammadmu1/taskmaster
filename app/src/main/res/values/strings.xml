@@ -28,4 +28,5 @@
     <string name="back">Back</string>
     <string name="_0">0</string>
     <string name="teamname">TeamName</string>
+    <string name="title_activity_edit_task">EditTaskActivity</string>
 </resources>
